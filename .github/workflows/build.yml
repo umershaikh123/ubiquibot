@@ -23,6 +23,11 @@ jobs:
 
       - name: Lint
         run: yarn lint
+      - name: Debug Environment Variables
+        run: |
+          echo "SUPABASE_ACCESS_TOKEN: $SUPABASE_ACCESS_TOKEN"
+          echo "SUPABASE_DB_PASSWORD: $SUPABASE_DB_PASSWORD"
+          echo "PROJECT_ID: $PROJECT_ID"
 
   run-migration:
     runs-on: ubuntu-latest

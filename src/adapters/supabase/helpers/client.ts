@@ -55,31 +55,29 @@ export const getLastWeeklyTime = async (): Promise<Date | undefined> => {
  * @dev Updates the last weekly update timestamp
  */
 export const updateLastWeeklyTime = async (time: Date): Promise<void> => {
-  const logger = getLogger();
-  const { supabase } = getAdapters();
-
-  const { data, error } = await supabase.from("weekly").select("last_time");
-  if (error) {
-    logger.error(`Checking last time failed, error: ${JSON.stringify(error)}`);
-    throw new Error(`Checking last time failed, error: ${JSON.stringify(error)}`);
-  }
-
-  if (data && data.length > 0) {
-    const { data, error } = await supabase.from("weekly").update({ last_time: time.toUTCString() }).neq("last_time", time.toUTCString());
-    if (error) {
-      logger.error(`Updating last time failed, error: ${JSON.stringify(error)}`);
-      throw new Error(`Updating last time failed, error: ${JSON.stringify(error)}`);
-    }
-    logger.info(`Updating last time is done, data: ${data}`);
-  } else {
-    const { data, error } = await supabase.from("weekly").insert({ last_time: time.toUTCString() });
-    if (error) {
-      logger.error(`Creating last time failed, error: ${JSON.stringify(error)}`);
-      throw new Error(`Creating last time failed, error: ${JSON.stringify(error)}`);
-    }
-    logger.info(`Creating last time is done, data: ${data}`);
-  }
-  return;
+  // const logger = getLogger();
+  // const { supabase } = getAdapters();
+  // const { data, error } = await supabase.from("weekly").select("last_time");
+  // if (error) {
+  //   logger.error(`Checking last time failed, error: ${JSON.stringify(error)}`);
+  //   throw new Error(`Checking last time failed, error: ${JSON.stringify(error)}`);
+  // }
+  // if (data && data.length > 0) {
+  //   const { data, error } = await supabase.from("weekly").update({ last_time: time.toUTCString() }).neq("last_time", time.toUTCString());
+  //   if (error) {
+  //     logger.error(`Updating last time failed, error: ${JSON.stringify(error)}`);
+  //     throw new Error(`Updating last time failed, error: ${JSON.stringify(error)}`);
+  //   }
+  //   logger.info(`Updating last time is done, data: ${data}`);
+  // } else {
+  //   const { data, error } = await supabase.from("weekly").insert({ last_time: time.toUTCString() });
+  //   if (error) {
+  //     logger.error(`Creating last time failed, error: ${JSON.stringify(error)}`);
+  //     throw new Error(`Creating last time failed, error: ${JSON.stringify(error)}`);
+  //   }
+  //   logger.info(`Creating last time is done, data: ${data}`);
+  // }
+  // return;
 };
 
 export type IssueAdditions = {

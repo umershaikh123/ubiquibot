@@ -75,7 +75,7 @@
     "rimraf": "3.0.2",
     "smee-client": "^1.2.2",
     "source-map-support": "^0.5.21",
-    "supabase": "^1.38.1",
+    "supabase": "^1.93.0",
     "ts-jest": "^26.4.4",
     "typescript": "^4.9.5"
   },
